@@ -1,0 +1,174 @@
+/* 继承 main.css 的变量，补充结果页特有样式 */
+
+/* 塔罗牌/卡片容器 */
+.tarot-card {
+    background: #150a25; /* 深紫色卡底 */
+    border: 2px solid var(--accent-gold);
+    border-radius: 15px;
+    padding: 30px;
+    position: relative;
+    box-shadow: 0 0 40px rgba(0,0,0,0.5), 0 0 20px rgba(255, 215, 0, 0.1);
+    margin-bottom: 30px;
+    overflow: hidden;
+    /* 纸张纹理效果 */
+    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.5' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+}
+
+/* 装饰角标 */
+.card-corner {
+    position: absolute;
+    width: 30px; height: 30px;
+    border: 2px solid var(--accent-gold);
+    transition: all 0.3s;
+}
+.top-left { top: 10px; left: 10px; border-right: none; border-bottom: none; }
+.top-right { top: 10px; right: 10px; border-left: none; border-bottom: none; }
+.bottom-left { bottom: 10px; left: 10px; border-right: none; border-top: none; }
+.bottom-right { bottom: 10px; right: 10px; border-left: none; border-top: none; }
+
+.card-header { text-align: center; margin-bottom: 20px; }
+.card-subtitle { color: var(--accent-gold-dim); font-size: 0.8rem; letter-spacing: 3px; text-transform: uppercase; }
+
+/* 肖像区域 */
+.portrait-section { text-align: center; margin-bottom: 25px; }
+.portrait-frame {
+    width: 100%;
+    max-width: 400px; /* 限制最大宽度 */
+    aspect-ratio: 3/4; /* 保持竖图比例 */
+    margin: 0 auto 15px;
+    padding: 8px;
+    border: 1px solid var(--accent-gold);
+    border-radius: 10px;
+    background: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+.portrait-inner {
+    width: 100%; height: 100%;
+    background: #2a2a2a;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex; align-items: center; justify-content: center;
+}
+.portrait-image { width: 100%; height: 100%; object-fit: cover; }
+.portrait-loading { color: #666; font-size: 0.9rem; animation: pulse 1.5s infinite; }
+
+/* 身份徽章 */
+.identity-badge { text-align: center; }
+.identity-badge h2 {
+    font-size: 2.2rem;
+    color: var(--accent-gold);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    margin-bottom: 5px;
+}
+.occupation-text {
+    display: inline-block;
+    background: var(--accent-gold-dim);
+    color: #000;
+    padding: 2px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+/* 信息网格 */
+.info-grid {
+    display: flex;
+    border-top: 1px solid rgba(255,215,0,0.3);
+    border-bottom: 1px solid rgba(255,215,0,0.3);
+    margin-bottom: 20px;
+    padding: 10px 0;
+}
+.info-box {
+    flex: 1;
+    text-align: center;
+    border-right: 1px solid rgba(255,215,0,0.3);
+}
+.info-box:last-child { border-right: none; }
+.info-box label { display: block; font-size: 0.75rem; color: #888; margin-bottom: 3px; }
+.info-box span { color: var(--text-light); font-size: 1rem; }
+
+/* 故事卷轴 */
+.story-scroll { margin-bottom: 20px; }
+.story-scroll h3, .echo-box h3 {
+    color: var(--accent-gold);
+    font-size: 1.1rem;
+    margin-bottom: 8px;
+    display: flex; align-items: center; gap: 5px;
+}
+.story-scroll p {
+    color: #ccc;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    text-align: justify;
+}
+
+/* 今生回响 (重点强调) */
+.echo-box {
+    background: rgba(255, 215, 0, 0.05);
+    border-left: 3px solid var(--accent-gold);
+    padding: 15px;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 20px;
+}
+.echo-text {
+    font-style: italic;
+    color: var(--text-light);
+    font-weight: bold;
+}
+
+/* 标签云 */
+.tags-container { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.trait-tag {
+    font-size: 0.8rem;
+    color: var(--accent-gold);
+    border: 1px solid var(--accent-gold);
+    padding: 4px 10px;
+    border-radius: 12px;
+}
+
+/* 底部二维码占位 */
+.card-footer {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    border-top: 1px dashed #444;
+    padding-top: 15px;
+}
+.footer-code { font-size: 0.8rem; color: #666; }
+.qr-placeholder {
+    width: 50px; height: 50px;
+    background: var(--accent-gold);
+    opacity: 0.8;
+}
+
+/* 按钮组 */
+.action-buttons {
+    display: flex; gap: 20px; justify-content: center;
+}
+.action-btn {
+    padding: 12px 25px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: bold;
+    font-family: inherit;
+    transition: all 0.3s;
+    border: 1px solid transparent;
+}
+.action-btn.primary {
+    background: var(--accent-gold);
+    color: #1a0b2e;
+}
+.action-btn.secondary {
+    background: transparent;
+    border-color: var(--accent-gold);
+    color: var(--accent-gold);
+}
+.action-btn:hover { transform: scale(1.05); }
+
+@media (max-width: 480px) {
+    .tarot-card { padding: 20px; }
+    .portrait-frame { max-height: 300px; }
+    .action-buttons { flex-direction: column; width: 100%; }
+    .action-btn { width: 100%; text-align: center; }
+}

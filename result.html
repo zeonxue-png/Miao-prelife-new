@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮回之书 - 前世揭秘</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/result.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="container">
+        <main class="result-content tarot-card" id="shareCard">
+            <div class="card-corner top-left"></div>
+            <div class="card-corner top-right"></div>
+            <div class="card-corner bottom-left"></div>
+            <div class="card-corner bottom-right"></div>
+
+            <div class="card-header">
+                <span class="card-subtitle">—— 喵星时空轮回镜 ——</span>
+            </div>
+
+            <div class="portrait-section">
+                <div class="portrait-frame">
+                    <div class="portrait-inner" id="portraitImage">
+                        <div class="portrait-loading">影像显影中...</div>
+                    </div>
+                </div>
+                
+                <div class="identity-badge">
+                    <h2 id="pastName">???</h2>
+                    <p id="occupation" class="occupation-text">???</p>
+                </div>
+            </div>
+
+            <div class="prophecy-section">
+                <div class="info-grid">
+                    <div class="info-box">
+                        <label>所属年代</label>
+                        <span id="era">...</span>
+                    </div>
+                    <div class="info-box">
+                        <label>出没地点</label>
+                        <span id="location">...</span>
+                    </div>
+                </div>
+
+                <div class="story-scroll">
+                    <h3>📜 前世羁绊</h3>
+                    <p id="storyContent">正在解读星象...</p>
+                </div>
+
+                <div class="echo-box">
+                    <h3>🔮 今生回响</h3>
+                    <p id="connectionText" class="echo-text">...</p>
+                </div>
+
+                <div class="tags-container" id="traitsGrid">
+                    </div>
+            </div>
+            
+            <div class="card-footer">
+                <p class="footer-code">Scan to Divination · 扫码测测</p>
+                <div class="qr-placeholder"></div>
+            </div>
+        </main>
+
+        <div class="action-buttons">
+            <button class="action-btn secondary" onclick="goBack()">
+                🔄 重启轮回
+            </button>
+            <button class="action-btn primary" onclick="alert('请截图保存此卡片分享~')">
+                ✨ 保存护符 (截图)
+            </button>
+        </div>
+    </div>
+
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/result.js"></script>
+</body>
+</html>

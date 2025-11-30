@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>喵星转世镜 - 揭秘前世</title>
+    <link href="https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/main.css">
+</head>
+<body>
+    <div class="stars-bg"></div>
+    <div class="stars-bg-2"></div>
+
+    <div class="container">
+        <header class="header">
+            <div class="mystic-symbol">🔮</div>
+            <h1 class="title">喵星转世镜</h1>
+            <p class="subtitle">穿越时空迷雾，解读灵宠的前世羁绊</p>
+        </header>
+
+        <main class="main-content glass-panel">
+            <div class="upload-section">
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-placeholder">
+                        <div class="upload-icon">✨</div>
+                        <p>献上灵宠法相</p>
+                        <small>（点击或拖拽上传猫咪照片）</small>
+                    </div>
+                    <input type="file" id="imageInput" accept="image/*" style="display: none;">
+                    <img id="previewImage" class="preview-image" style="display: none;">
+                </div>
+            </div>
+
+            <div class="form-section">
+                <h2>📜 刻录灵宠印记</h2>
+                <form id="catForm" class="cat-form">
+                    <div class="form-group">
+                        <label for="catName">真名 (Name)</label>
+                        <input type="text" id="catName" name="catName" placeholder="呼唤它的名字..." required>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group half">
+                            <label>阴阳 (Gender)</label>
+                            <div class="radio-group">
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="公猫" required>
+                                    <span>♂ 公子</span>
+                                </label>
+                                <label class="radio-label">
+                                    <input type="radio" name="gender" value="母猫" required>
+                                    <span>♀ 姑娘</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="form-group half">
+                            <label for="age">庚帖 (Age)</label>
+                            <select id="age" name="age" required>
+                                <option value="">选择年龄</option>
+                                <option value="幼猫">🍼 幼年期 (0-1岁)</option>
+                                <option value="成猫">✨ 成熟期 (1-7岁)</option>
+                                <option value="老猫">🌙 长老期 (7岁+)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="breed">血统 (Breed)</label>
+                        <select id="breed" name="breed" required>
+                            <option value="">选择血统</option>
+                            <option value="英国短毛猫">英国短毛猫</option>
+                            <option value="美国短毛猫">美国短毛猫</option>
+                            <option value="中华田园猫">中华田园猫</option>
+                            <option value="布偶猫">布偶猫</option>
+                            <option value="暹罗猫">暹罗猫</option>
+                            <option value="波斯猫">波斯猫</option>
+                            <option value="缅因猫">缅因猫</option>
+                            <option value="其他">异域血统</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>灵性特征 (Personality)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="personality" value="活泼"><span>🔥 活泼好动</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="personality" value="安静"><span>🌊 安静内敛</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="personality" value="粘人"><span>❤️ 依恋生人</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="personality" value="独立"><span>🦅 独来独往</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="personality" value="调皮"><span>⚡ 捣蛋鬼</span></label>
+                            <label class="checkbox-label"><input type="checkbox" name="personality" value="高冷"><span>❄️ 高冷傲娇</span></label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="style">显影风格 (Art Style)</label>
+                        <select id="style" name="style" required>
+                            <option value="">选择一种占卜视界</option>
+                            <option value="古风">🏮 东方古韵 (古风水墨)</option>
+                            <option value="油画">🖼️ 西洋古典 (厚涂油画)</option>
+                            <option value="水彩">🖌️ 梦幻逸闻 (清新水彩)</option>
+                            <option value="赛博朋克">🌃 未来幻象 (赛博霓虹)</option>
+                            <option value="写实">📸 历史重现 (电影写实)</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" class="predict-btn" id="predictBtn">
+                        🔮 开启转世之门
+                    </button>
+                </form>
+            </div>
+        </main>
+
+        <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+            <div class="loading-content glass-panel">
+                <div class="crystal-ball">
+                    <div class="crystal-shine"></div>
+                </div>
+                <h3>星盘推演中...</h3>
+                <p id="loadingText">正在穿越第 1024 号平行宇宙</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="config/dify-config.js"></script>
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/upload.js"></script>
+    <script src="assets/js/dify-api.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,183 @@
+/* 引入神秘字体 */
+@import url('https://fonts.googleapis.com/css2?family=ZCOOL+XiaoWei&display=swap');
+
+:root {
+    --bg-dark: #1a0b2e;
+    --bg-purple: #2d1b4e;
+    --accent-gold: #ffd700;
+    --accent-gold-dim: #b8860b;
+    --text-light: #f0e6ff;
+    --text-dim: #b39ddb;
+    --glass-bg: rgba(20, 10, 40, 0.6);
+    --glass-border: rgba(255, 215, 0, 0.2);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'ZCOOL XiaoWei', 'SimSun', 'Songti SC', serif; /* 使用衬线体增加神秘感 */
+    background: linear-gradient(135deg, var(--bg-dark) 0%, var(--bg-purple) 100%);
+    min-height: 100vh;
+    color: var(--text-light);
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 动态星空背景 */
+.stars-bg, .stars-bg-2 {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    background-image: 
+        radial-gradient(2px 2px at 20px 30px, #eee, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 40px 70px, #fff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 50px 160px, #ddd, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 90px 40px, #fff, rgba(0,0,0,0));
+    background-size: 200px 200px;
+    animation: twinkle 5s linear infinite;
+    opacity: 0.3;
+}
+.stars-bg-2 { background-size: 300px 300px; animation-duration: 8s; }
+
+@keyframes twinkle { from {transform: translateY(0);} to {transform: translateY(-200px);} }
+
+.container { max-width: 800px; margin: 0 auto; padding: 20px; position: relative; z-index: 1; }
+
+/* 头部样式 */
+.header { text-align: center; margin-bottom: 40px; padding-top: 20px; }
+.mystic-symbol { font-size: 3rem; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+.title { font-size: 3rem; color: var(--accent-gold); text-shadow: 0 0 10px rgba(255, 215, 0, 0.5); letter-spacing: 2px; }
+.subtitle { color: var(--text-dim); font-size: 1.1rem; margin-top: 5px; }
+
+@keyframes float { 0%, 100% {transform: translateY(0);} 50% {transform: translateY(-10px);} }
+
+/* 玻璃拟态卡片 */
+.glass-panel {
+    background: var(--glass-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+}
+
+/* 上传区域 */
+.upload-area {
+    border: 2px dashed var(--accent-gold-dim);
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    padding: 40px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.upload-area:hover { border-color: var(--accent-gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.1); }
+.upload-icon { font-size: 3rem; margin-bottom: 10px; opacity: 0.8; }
+.preview-image { max-width: 100%; border-radius: 10px; border: 2px solid var(--accent-gold); }
+
+/* 表单样式 */
+.form-section h2 { color: var(--accent-gold); border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; margin-bottom: 25px; text-align: center; font-size: 1.5rem; }
+.form-group { margin-bottom: 20px; display: flex; flex-direction: column; }
+.form-row { display: flex; gap: 20px; }
+.form-group.half { flex: 1; }
+
+label { margin-bottom: 8px; color: var(--accent-gold); font-size: 0.95rem; letter-spacing: 1px; }
+
+input[type="text"], select {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    color: var(--text-light);
+    padding: 12px;
+    border-radius: 8px;
+    font-family: inherit;
+    transition: all 0.3s;
+}
+input[type="text"]:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-gold);
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.2);
+    background: rgba(255, 255, 255, 0.1);
+}
+select option { background: #1a0b2e; color: white; }
+
+/* 单选和多选 */
+.radio-group, .checkbox-group { display: flex; flex-wrap: wrap; gap: 10px; }
+.radio-label, .checkbox-label {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 0.9rem;
+}
+.radio-label:hover, .checkbox-label:hover { border-color: var(--accent-gold); }
+input:checked + span { color: var(--bg-dark); }
+.radio-label input:checked + span, .checkbox-label input:checked + span { font-weight: bold; }
+
+/* 选中状态：金色高亮 */
+.radio-label input:checked + span, 
+.checkbox-label input:checked + span {
+    /* 这里配合JS添加 .checked 类实现样式变化，或者直接用 :has 选择器 */
+}
+/* 简易选中样式配合 JS */
+.radio-label.checked, .checkbox-label.checked {
+    background: var(--accent-gold);
+    color: var(--bg-dark);
+    box-shadow: 0 0 10px var(--accent-gold);
+    border-color: var(--accent-gold);
+}
+.radio-label.checked span, .checkbox-label.checked span { color: var(--bg-dark); }
+
+/* 主按钮 */
+.predict-btn {
+    background: linear-gradient(45deg, #b8860b, #ffd700);
+    color: #1a0b2e;
+    border: none;
+    width: 100%;
+    padding: 18px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-family: inherit;
+    letter-spacing: 2px;
+}
+.predict-btn:hover { transform: translateY(-2px); box-shadow: 0 0 20px rgba(255, 215, 0, 0.4); }
+
+/* 水晶球 Loading */
+.loading-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(10, 5, 20, 0.9);
+    z-index: 999;
+    display: flex; justify-content: center; align-items: center;
+}
+.loading-content { text-align: center; max-width: 300px; }
+.crystal-ball {
+    width: 100px; height: 100px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.8), rgba(138,43,226,0.4), rgba(75,0,130,0.8));
+    border-radius: 50%;
+    margin: 0 auto 20px;
+    box-shadow: 0 0 30px rgba(138,43,226, 0.6), inset 0 0 20px rgba(255,255,255,0.2);
+    position: relative;
+    overflow: hidden;
+    animation: pulseBall 2s infinite alternate;
+}
+.crystal-shine {
+    position: absolute; top: 0; left: -50%; width: 200%; height: 100%;
+    background: linear-gradient(to right, transparent, rgba(255,255,255,0.4), transparent);
+    animation: crystalSpin 2s linear infinite;
+}
+
+@keyframes pulseBall { from { box-shadow: 0 0 20px rgba(138,43,226, 0.4); } to { box-shadow: 0 0 50px rgba(138,43,226, 0.8); } }
+@keyframes crystalSpin { 0% {transform: translateX(-50%);} 100% {transform: translateX(50%);} }
+
+@media (max-width: 768px) {
+    .title { font-size: 2rem; }
+    .form-row { flex-direction: column; gap: 0; }
+    .glass-panel { padding: 25px; }
+}
